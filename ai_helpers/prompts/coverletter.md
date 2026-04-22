@@ -8,9 +8,10 @@ My approach tends to focus on simplifying systems, planning thoroughly, and docu
 Happy to share more details or anything else if helpful.
 ---BASE LETTER END---
 
-Your job: produce exactly 5 distinct candidate replacements for the `COMPANY LINE`. Each candidate must:
-- Be 1–2 sentences.
-- Reference something concrete about the company, product, team, or role (drawn from the job description).
+Your job: produce exactly 6 distinct candidate replacements for the `COMPANY LINE`. Each candidate must:
+- Be 2-3 sentences.
+- If interest or qualifications are supplied, utilize them in the responses.
+- Reference something concrete about the company, product, team, or role (drawn from the job description) if interest is not sufficient for a good response.
 - Match the surrounding tone: plain, direct, engineer-to-engineer, no buzzwords, no hype, no "I am passionate about".
 - Read naturally as a bridge from the "events and notifications" paragraph into the "simplifying systems" paragraph.
 - Be distinct from the other 4 (different angle: product, tech, team, mission, user outcome, etc.).
@@ -31,4 +32,4 @@ Company: {company}
 Job description:
 {jd}
 
-Why interested (optional, may be empty): {interest}
+Why interested and/or qualified (optional, may be empty): {interest}
