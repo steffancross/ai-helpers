@@ -12,7 +12,7 @@ DEFAULT_MAX_TOKENS = 2048
 def call_llm(
     system: str,
     user: str,
-    model: str = HAIKU,
+    model: str = OPUS,
     max_tokens: int = DEFAULT_MAX_TOKENS,
 ) -> str:
     api_key = os.environ.get("ANTHROPIC_API_KEY")
