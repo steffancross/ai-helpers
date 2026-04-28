@@ -1,33 +1,22 @@
-import os
+from ai_helpers.providers import anthropic as _anthropic
+from ai_helpers.providers import openai as _openai
 
-import anthropic
-
-DEFAULT_MODEL = "claude-sonnet-4-6"
 OPUS = "claude-opus-4-7"
 SONNET = "claude-sonnet-4-6"
 HAIKU = "claude-haiku-4-5"
+GPT5_4 = "gpt-5.4"
+GPT5_4_MINI = "gpt-5.4-mini"
+
+DEFAULT_MODEL = GPT5_4
 DEFAULT_MAX_TOKENS = 2048
 
 
 def call_llm(
     system: str,
     user: str,
-    model: str = OPUS,
+    model: str = DEFAULT_MODEL,
     max_tokens: int = DEFAULT_MAX_TOKENS,
 ) -> str:
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "ANTHROPIC_API_KEY is not set. Copy .env.example to .env and add your key."
-        )
-
-    client = anthropic.Anthropic(api_key=api_key)
-    response = client.messages.create(
-        model=model,
-        max_tokens=max_tokens,
-        system=system,
-        messages=[{"role": "user", "content": user}],
-    )
-    return "".join(
-        block.text for block in response.content if getattr(block, "type", None) == "text"
-    ).strip()
+    if model.startswith("claude-"):
+        return _anthropic.call(system, user, model, max_tokens)
+    return _openai.call(system, user, model, max_tokens)
